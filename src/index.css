@@ -662,12 +662,14 @@ img { display: block; width: 100%; }
 .footer-socials a { font-weight: 800; }
 .developer-credit {
   justify-self: center;
-  padding: 10px 14px;
-  border: 1px solid rgba(239,68,68,0.22);
+  padding: 6px 10px;
+  border: 1px solid rgba(239,68,68,0.18);
   border-radius: 999px;
-  background: rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.04);
   color: var(--muted);
-  font-weight: 800;
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.2;
   transition: 220ms ease;
 }
 .developer-credit strong {
@@ -676,7 +678,7 @@ img { display: block; width: 100%; }
 .developer-credit:hover {
   color: #fff;
   border-color: rgba(239,68,68,0.48);
-  box-shadow: 0 0 28px rgba(239,68,68,0.16);
+  box-shadow: 0 0 24px rgba(239,68,68,0.14);
   transform: translateY(-2px);
 }
 .to-top {
