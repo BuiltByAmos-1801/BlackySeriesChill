@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowUp,
   Headphones,
@@ -147,10 +147,7 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
 };
 
-const softFloat = (delay = 0) => ({
-  y: [0, -8, 0],
-  transition: { duration: 5.5, repeat: Infinity, ease: "easeInOut", delay },
-});
+const softFloat = () => ({});
 
 function Equalizer({ compact = false }) {
   return (
@@ -215,12 +212,6 @@ function Navbar({ activeSection }) {
 }
 
 function Hero() {
-  const [lineIndex, setLineIndex] = useState(0);
-  useEffect(() => {
-    const timer = setInterval(() => setLineIndex((value) => (value + 1) % heroLines.length), 2200);
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <section id="home" className="hero">
       <div className="blob blob-one" />
@@ -233,13 +224,13 @@ function Hero() {
           <div className="rotating-line" aria-live="polite">
             <AnimatePresence mode="wait">
               <motion.span
-                key={heroLines[lineIndex]}
+                key={heroLines[0]}
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.35 }}
               >
-                {heroLines[lineIndex]}
+                {heroLines[0]}
               </motion.span>
             </AnimatePresence>
           </div>
@@ -254,12 +245,11 @@ function Hero() {
         <motion.div
           className="artist-card glass-card"
           initial={{ opacity: 0, scale: 0.92, rotate: -2 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0, y: [0, -12, 0] }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{
             opacity: { duration: 0.8, delay: 0.15 },
             scale: { duration: 0.8, delay: 0.15 },
             rotate: { duration: 0.8, delay: 0.15 },
-            y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 },
           }}
         >
           <div className="artist-photo">
@@ -278,18 +268,10 @@ function Hero() {
 }
 
 function LivePanel() {
-  const [time, setTime] = useState("");
-  useEffect(() => {
-    const update = () => setTime(new Date().toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit", second: "2-digit" }));
-    update();
-    const timer = setInterval(update, 1000);
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <div className="live-panel glass-card">
       <div className="live-now"><span /> Live Brand Pulse</div>
-      <strong>{time}</strong>
+      <strong>Creative Mode</strong>
       <div className="live-stats">
         {liveStats.map(([label, value]) => <p key={label}><small>{label}</small><b>{value}</b></p>)}
       </div>
@@ -512,16 +494,7 @@ function Footer() {
 }
 
 function App() {
-  const [loading, setLoading] = useState(true);
   const [activeSection, setActiveSection] = useState("home");
-  const shellRef = useRef(null);
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 25, restDelta: 0.001 });
-
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1500);
-    return () => clearTimeout(timer);
-  }, []);
 
   useEffect(() => {
     const sections = navLinks.map((item) => document.getElementById(item.toLowerCase())).filter(Boolean);
@@ -533,19 +506,8 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
-  const backgroundOrbs = useMemo(() => Array.from({ length: 8 }).map((_, index) => ({ left: `${8 + index * 12}%`, delay: `${index * 0.45}s` })), []);
   return (
-    <div
-      ref={shellRef}
-      className="app-shell"
-      style={{ "--spot-x": "50%", "--spot-y": "20%" }}
-      onPointerMove={(event) => {
-        const x = (event.clientX / window.innerWidth) * 100;
-        const y = (event.clientY / window.innerHeight) * 100;
-        shellRef.current?.style.setProperty("--spot-x", `${x}%`);
-        shellRef.current?.style.setProperty("--spot-y", `${y}%`);
-      }}
-    >
+    <div className="app-shell">
       <SEO
         title="Blacky Series Chill | Sadiq Khan | Official Music Artist"
         description={seoDescription}
@@ -554,9 +516,6 @@ function App() {
         image={`${siteUrl}og-image.jpg`}
         schema={schemaData}
       />
-      <AnimatePresence>{loading && <Preloader />}</AnimatePresence>
-      <motion.div className="scroll-progress" style={{ scaleX }} />
-      <div className="site-bg" aria-hidden="true">{backgroundOrbs.map((orb, index) => <span key={index} style={{ left: orb.left, animationDelay: orb.delay }} />)}</div>
       <Navbar activeSection={activeSection} />
       <main><Hero /><About /><Music /><SocialHub /><Gallery /><Journey /><Collaboration /><FAQ /><Contact /></main>
       <Footer />
