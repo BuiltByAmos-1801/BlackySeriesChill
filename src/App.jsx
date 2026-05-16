@@ -40,6 +40,7 @@ const seoKeywords =
 
 const navLinks = ["Home", "About", "Music", "Gallery", "Journey", "Socials", "Contact"];
 const skills = ["Music Artist", "Lyrics Writer", "Streaming Media", "Live Broadcast", "Photography", "Creative Collaboration"];
+const releases = [];
 const socials = [
   { name: "Instagram", text: "Behind the scenes, reels, studio moments.", href: links.instagram, icon: Sparkles },
   { name: "Spotify", text: "Original music, releases, and artist profile.", href: links.spotify, icon: Headphones },
