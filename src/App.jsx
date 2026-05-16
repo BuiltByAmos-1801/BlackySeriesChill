@@ -40,13 +40,6 @@ const seoKeywords =
 
 const navLinks = ["Home", "About", "Music", "Gallery", "Journey", "Socials", "Contact"];
 const skills = ["Music Artist", "Lyrics Writer", "Streaming Media", "Live Broadcast", "Photography", "Creative Collaboration"];
-const releases = [
-  { title: "Midnight Feelings", type: "Single", year: "2026", color: "linear-gradient(135deg,#ef4444,#8b5cf6)", href: links.spotify },
-  { title: "Silent City", type: "Demo", year: "2026", color: "linear-gradient(135deg,#991b1b,#ec4899)", href: links.spotify },
-  { title: "Heart Frequency", type: "EP", year: "2025", color: "linear-gradient(135deg,#f97316,#ef4444)", href: links.spotify },
-  { title: "Spotify Track 1", type: "Single", year: "2026", color: "linear-gradient(135deg,#8b5cf6,#ec4899)", href: "https://open.spotify.com/track/6Xwj11LFOZUi80Kxn5297Z?si=8710424e271c4f97" },
-  { title: "Spotify Track 2", type: "Single", year: "2026", color: "linear-gradient(135deg,#f97316,#9333ea)", href: "https://open.spotify.com/track/3VUwurEzFXEJ95JQLK1JKS?si=f94dbff29f1848c2" },
-];
 const socials = [
   { name: "Instagram", text: "Behind the scenes, reels, studio moments.", href: links.instagram, icon: Sparkles },
   { name: "Spotify", text: "Original music, releases, and artist profile.", href: links.spotify, icon: Headphones },
