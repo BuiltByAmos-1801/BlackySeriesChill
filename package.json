@@ -1,6 +1,7 @@
 {
   "name": "blacky-series-chill",
   "version": "1.0.0",
+  "homepage": "https://www.blackyserieschill.in",
   "private": true,
   "type": "module",
   "scripts": {
