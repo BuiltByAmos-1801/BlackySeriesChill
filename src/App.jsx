@@ -23,6 +23,7 @@ import instaImage from "./images/SnapInsta.to_476368469_18015294890673477_240426
 import screenOne from "./images/Screenshot_2025-10-20-11-05-04-93_92460851df6f172a4592fca41cc2d2e6.jpg.jpeg";
 import screenTwo from "./images/Screenshot_2025-10-20-11-05-21-76_92460851df6f172a4592fca41cc2d2e6.jpg.jpeg";
 import screenThree from "./images/Screenshot_2025-10-20-11-05-46-42_92460851df6f172a4592fca41cc2d2e6.jpg.jpeg";
+import SEO from "./components/SEO.jsx";
 
 const links = {
   instagram: "https://www.instagram.com/sadiq__khan0921",
@@ -31,6 +32,11 @@ const links = {
   spotify: "https://open.spotify.com/artist/23txuHa99Z3PwhyN20VZwy?si=CaX93fYTQpilfkpxzV5ADQ",
   facebook: "https://www.facebook.com/share/18TbRvDNF7/?mibextid=wwXIfr",
 };
+const siteUrl = "https://yourdomain.com/";
+const seoDescription =
+  "Official website of Blacky Series Chill and Sadiq Khan. Explore original music, Spotify tracks, lyrics, artist journey, collaborations and latest releases.";
+const seoKeywords =
+  "Blacky Series Chill, Sadiq Khan Music Artist, Indian Music Artist, Spotify Artist, Independent Music Artist, Original Lyrics, Music Collaboration, Jharkhand Music Artist, Garhwa Music Artist";
 
 const navLinks = ["Home", "About", "Music", "Gallery", "Journey", "Socials", "Contact"];
 const skills = ["Music Artist", "Lyrics Writer", "Streaming Media", "Live Broadcast", "Photography", "Creative Collaboration"];
@@ -67,6 +73,73 @@ const journey = [
   "Collaboration With Artists",
   "Streaming & Live Broadcast Skills",
   "Building Blacky Series Chill Brand",
+];
+const faqItems = [
+  {
+    question: "Who is Blacky Series Chill?",
+    answer: "Blacky Series Chill is the official music artist and personal brand identity of Sadiq Khan, focused on original music, lyrics, creative visuals and collaborations.",
+  },
+  {
+    question: "Who is Sadiq Khan?",
+    answer: "Sadiq Khan is an Indian independent music artist from the Garhwa, Jharkhand region who creates original lyrics, music concepts and digital creative content.",
+  },
+  {
+    question: "Where can I listen to Blacky Series Chill music?",
+    answer: "You can listen to Blacky Series Chill music on Spotify through the official artist profile linked on this website.",
+  },
+  {
+    question: "Is Blacky Series Chill available for collaborations?",
+    answer: "Yes, Blacky Series Chill is available for music collaborations, live performances, creative projects and digital promotions.",
+  },
+  {
+    question: "How can I contact Sadiq Khan?",
+    answer: "You can contact Sadiq Khan through the contact form on this website or through the listed social media profiles.",
+  },
+];
+const schemaData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    name: "Blacky Series Chill",
+    alternateName: "Sadiq Khan",
+    url: siteUrl,
+    genre: ["Independent Music", "Hip-Hop", "Rap"],
+    member: { "@type": "Person", name: "Sadiq Khan" },
+    sameAs: [links.spotify, links.instagram, links.linkedin, links.twitter, links.facebook],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Sadiq Khan",
+    alternateName: "Blacky Series Chill",
+    jobTitle: "Music Artist",
+    url: siteUrl,
+    sameAs: [links.spotify, links.instagram, links.linkedin, links.twitter, links.facebook],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Blacky Series Chill",
+    url: siteUrl,
+    description: seoDescription,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Blacky Series Chill",
+    url: siteUrl,
+    logo: `${siteUrl}og-image.jpg`,
+    sameAs: [links.spotify, links.instagram, links.linkedin, links.twitter, links.facebook],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  },
 ];
 const heroLines = ["Original Lyrics", "Live Broadcast Energy", "Photography Mood", "Collaboration Ready"];
 const liveStats = [
@@ -111,9 +184,9 @@ function Preloader() {
   return (
     <motion.div className="preloader" exit={{ opacity: 0, visibility: "hidden" }} transition={{ duration: 0.55 }}>
       <Equalizer compact />
-      <motion.h1 initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+      <motion.div className="preloader-title" initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
         Blacky Series Chill
-      </motion.h1>
+      </motion.div>
     </motion.div>
   );
 }
@@ -123,7 +196,7 @@ function Navbar({ activeSection }) {
   return (
     <header className="navbar">
       <a className="brand" href="#home" onClick={() => setOpen(false)}>
-        <img src={logoImage} alt="Blacky Series Chill logo" />
+        <img src={logoImage} alt="Blacky Series Chill official logo" width="84" height="84" />
         <span>Blacky</span> Series Chill
       </a>
       <nav className="desktop-nav" aria-label="Primary navigation">
@@ -161,7 +234,7 @@ function Hero() {
       <div className="hero-grid">
         <motion.div className="hero-copy" initial={{ opacity: 0, y: 34 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.85 }}>
           <span className="hero-kicker"><Sparkles size={18} /> Official Music Artist</span>
-          <h1>Blacky Series Chill</h1>
+          <h1>Blacky Series Chill – Official Music Artist</h1>
           <p className="tagline">Where Emotions Turn Into Music.</p>
           <div className="rotating-line" aria-live="polite">
             <AnimatePresence mode="wait">
@@ -196,11 +269,11 @@ function Hero() {
           }}
         >
           <div className="artist-photo">
-            <img loading="lazy" src={artistImage} alt="Sadiq Khan artist portrait" />
+            <img loading="lazy" src={artistImage} alt="Sadiq Khan music artist portrait" width="720" height="900" />
           </div>
           <div className="artist-info">
             <span>Artist Card</span>
-            <h2>Sadiq Khan</h2>
+            <h3>Sadiq Khan</h3>
             <p>Music Artist | Lyrics Writer | Creator</p>
           </div>
           <div className="mini-stats"><span>Originals</span><span>Live</span><span>Collabs</span></div>
