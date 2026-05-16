@@ -23,9 +23,9 @@ const links = {
 const navLinks = ["Home", "About", "Music", "Gallery", "Journey", "Socials", "Contact"];
 const skills = ["Music Artist", "Lyrics Writer", "Streaming Media", "Live Broadcast", "Photography", "Creative Collaboration"];
 const releases = [
-  { title: "Midnight Feelings", type: "Single", year: "2026", color: "linear-gradient(135deg,#1DB954,#8b5cf6)" },
-  { title: "Silent City", type: "Demo", year: "2026", color: "linear-gradient(135deg,#8b5cf6,#ec4899)" },
-  { title: "Heart Frequency", type: "EP", year: "2025", color: "linear-gradient(135deg,#bef264,#1DB954)" },
+  { title: "Midnight Feelings", type: "Single", year: "2026", color: "linear-gradient(135deg,#ef4444,#8b5cf6)" },
+  { title: "Silent City", type: "Demo", year: "2026", color: "linear-gradient(135deg,#991b1b,#ec4899)" },
+  { title: "Heart Frequency", type: "EP", year: "2025", color: "linear-gradient(135deg,#f97316,#ef4444)" },
 ];
 const socials = [
   { name: "Instagram", text: "Behind the scenes, reels, studio moments.", href: links.instagram, icon: Sparkles },
@@ -54,6 +54,11 @@ const fadeUp = {
   hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
 };
+
+const softFloat = (delay = 0) => ({
+  y: [0, -8, 0],
+  transition: { duration: 5.5, repeat: Infinity, ease: "easeInOut", delay },
+});
 
 function Equalizer({ compact = false }) {
   return (
@@ -133,9 +138,19 @@ function Hero() {
           </div>
           <Equalizer />
         </motion.div>
-        <motion.div className="artist-card glass-card" initial={{ opacity: 0, scale: 0.92, rotate: -2 }} animate={{ opacity: 1, scale: 1, rotate: 0 }} transition={{ duration: 0.8, delay: 0.15 }}>
+        <motion.div
+          className="artist-card glass-card"
+          initial={{ opacity: 0, scale: 0.92, rotate: -2 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0, y: [0, -12, 0] }}
+          transition={{
+            opacity: { duration: 0.8, delay: 0.15 },
+            scale: { duration: 0.8, delay: 0.15 },
+            rotate: { duration: 0.8, delay: 0.15 },
+            y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 },
+          }}
+        >
           <div className="artist-photo">
-            <img loading="lazy" src="https://placehold.co/720x900/050505/1DB954?text=Sadiq+Khan" alt="Sadiq Khan artist portrait placeholder" />
+            <img loading="lazy" src="https://placehold.co/720x900/050505/ef4444?text=Sadiq+Khan" alt="Sadiq Khan artist portrait placeholder" />
           </div>
           <div className="artist-info">
             <span>Artist Card</span>
@@ -158,7 +173,7 @@ function About() {
           <p>His academic journey includes studies at Garhwa Polytechnic College, Hasker, Garhwa. With experience in streaming media, live broadcast, photography, and artist collaboration, Sadiq brings a multidimensional approach to his work while contributing to a dynamic culture of music, performance, and digital creativity.</p>
         </div>
         <div className="skill-wrap">
-          {skills.map((skill) => <motion.span whileHover={{ y: -4, scale: 1.03 }} className="skill-pill" key={skill}>{skill}</motion.span>)}
+          {skills.map((skill, index) => <motion.span animate={softFloat(index * 0.12)} whileHover={{ y: -7, scale: 1.05 }} className="skill-pill" key={skill}>{skill}</motion.span>)}
         </div>
       </div>
     </Section>
@@ -174,8 +189,8 @@ function Music() {
         </div>
         <div className="release-stack">
           <Equalizer compact />
-          {releases.map((release) => (
-            <motion.article className="release-card glass-card" key={release.title} whileHover={{ x: 8, scale: 1.01 }}>
+          {releases.map((release, index) => (
+            <motion.article className="release-card glass-card" key={release.title} animate={softFloat(index * 0.18)} whileHover={{ x: 8, scale: 1.02 }}>
               <div className="release-art" style={{ background: release.color }} />
               <div><h3>{release.title}</h3><p>{release.type} · {release.year}</p></div>
               <Music2 size={22} />
@@ -192,8 +207,8 @@ function SocialHub() {
   return (
     <Section id="socials" eyebrow="Social Hub" title="Follow The Signal Everywhere">
       <div className="social-grid">
-        {socials.map(({ name, text, href, icon: Icon }) => (
-          <motion.a className="social-card glass-card" href={href} target="_blank" rel="noreferrer" key={name} whileHover={{ y: -8, scale: 1.02 }}>
+        {socials.map(({ name, text, href, icon: Icon }, index) => (
+          <motion.a className="social-card glass-card" href={href} target="_blank" rel="noreferrer" key={name} animate={softFloat(index * 0.16)} whileHover={{ y: -12, scale: 1.03 }}>
             <Icon size={30} /><h3>{name}</h3><p>{text}</p><span>Visit</span>
           </motion.a>
         ))}
@@ -206,8 +221,8 @@ function Gallery() {
   return (
     <Section id="gallery" eyebrow="Gallery" title="Moments, Music & Memories">
       <div className="gallery-grid">
-        {gallery.map(([title, src, size]) => (
-          <motion.figure className={`gallery-item glass-card ${size}`} key={title} whileHover={{ y: -6 }}>
+        {gallery.map(([title, src, size], index) => (
+          <motion.figure className={`gallery-item glass-card ${size}`} key={title} animate={softFloat(index * 0.1)} whileHover={{ y: -10, scale: 1.015 }}>
             <img loading="lazy" src={src} alt={title} />
             <figcaption>{title}</figcaption>
           </motion.figure>
@@ -222,7 +237,7 @@ function Journey() {
     <Section id="journey" eyebrow="Journey" title="From Passion To Personal Brand">
       <div className="timeline">
         {journey.map((item, index) => (
-          <motion.div className="timeline-item" key={item} variants={fadeUp}>
+          <motion.div className="timeline-item" key={item} variants={fadeUp} animate={softFloat(index * 0.12)}>
             <span>{String(index + 1).padStart(2, "0")}</span>
             <div className="glass-card"><h3>{item}</h3><p>{index === 0 ? "The first spark became a serious creative direction." : "Each chapter adds more depth, craft, and identity to the Blacky Series Chill brand."}</p></div>
           </motion.div>
