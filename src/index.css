@@ -219,10 +219,11 @@ img { display: block; width: 100%; }
   position: relative;
   border: 1px solid var(--line);
   border-radius: 28px;
-  background: var(--glass);
+  background: linear-gradient(145deg, rgba(255,255,255,0.09), rgba(239,68,68,0.045));
   backdrop-filter: blur(18px);
-  box-shadow: 0 24px 80px rgba(0,0,0,0.28);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.32), 0 0 34px rgba(239,68,68,0.07);
   overflow: hidden;
+  transition: border-color 320ms ease, box-shadow 320ms ease, background 320ms ease;
 }
 .glass-card::before {
   content: "";
@@ -230,7 +231,22 @@ img { display: block; width: 100%; }
   inset: 0;
   pointer-events: none;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(29,185,84,0.18), transparent 42%, rgba(139,92,246,0.22));
+  background: linear-gradient(135deg, rgba(239,68,68,0.24), transparent 42%, rgba(139,92,246,0.18));
+  animation: glassGlow 6s ease-in-out infinite alternate;
+}
+.glass-card::after {
+  content: "";
+  position: absolute;
+  inset: -60% -25%;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent 42%, rgba(255,255,255,0.12), transparent 58%);
+  transform: translateX(-35%) rotate(8deg);
+  animation: lightSweep 8s ease-in-out infinite;
+  opacity: 0.28;
+}
+.glass-card:hover {
+  border-color: rgba(239,68,68,0.38);
+  box-shadow: 0 28px 90px rgba(0,0,0,0.38), 0 0 48px rgba(239,68,68,0.18);
 }
 .artist-card { padding: 14px; }
 .artist-photo { position: relative; overflow: hidden; border-radius: 22px; aspect-ratio: 4 / 5; }
