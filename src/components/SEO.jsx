@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 
-const defaultTitle = "Blacky Series Chill | Official Music Artist Website";
+const defaultTitle = "Blacky Series Chill | Sadiq Khan | Official Music Artist";
 const defaultDescription =
   "Official website of Blacky Series Chill and Sadiq Khan. Explore original music, Spotify tracks, lyrics, artist journey, collaborations and latest releases.";
 const defaultKeywords =
