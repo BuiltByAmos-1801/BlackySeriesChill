@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import {
   ArrowUp,
@@ -418,7 +418,7 @@ function Footer() {
 function App() {
   const [loading, setLoading] = useState(true);
   const [activeSection, setActiveSection] = useState("home");
-  const [spotlight, setSpotlight] = useState({ x: 50, y: 20 });
+  const shellRef = useRef(null);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 25, restDelta: 0.001 });
 
@@ -440,12 +440,14 @@ function App() {
   const backgroundOrbs = useMemo(() => Array.from({ length: 8 }).map((_, index) => ({ left: `${8 + index * 12}%`, delay: `${index * 0.45}s` })), []);
   return (
     <div
+      ref={shellRef}
       className="app-shell"
-      style={{ "--spot-x": `${spotlight.x}%`, "--spot-y": `${spotlight.y}%` }}
+      style={{ "--spot-x": "50%", "--spot-y": "20%" }}
       onPointerMove={(event) => {
         const x = (event.clientX / window.innerWidth) * 100;
         const y = (event.clientY / window.innerHeight) * 100;
-        setSpotlight({ x, y });
+        shellRef.current?.style.setProperty("--spot-x", `${x}%`);
+        shellRef.current?.style.setProperty("--spot-y", `${y}%`);
       }}
     >
       <AnimatePresence>{loading && <Preloader />}</AnimatePresence>
