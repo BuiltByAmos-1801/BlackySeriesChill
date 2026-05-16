@@ -12,7 +12,7 @@ import {
   X,
 } from "lucide-react";
 import artistImage from "./images/Sadiq_Khan.JPG.jpeg";
-import logoImage from "./images/logo.jpeg";
+import logoImage from "./images/logo.jpg";
 import albumCover from "./images/The Opening New Song Vol.1 Album Cover Music Instagram Post_20250515_154719_0000.jpg.jpeg";
 import musicThumb from "./images/Brown and Green Simple Music Mix YouTube Thumbnail_20250125_235643_0000.jpg.jpeg";
 import travelThumb from "./images/Blue & White Minimal Travel Vlog  YouTube Thumbnail_20251020_111120_0000.jpg.jpeg";
