@@ -667,13 +667,15 @@ img { display: block; width: 100%; }
   border-radius: 999px;
   background: rgba(255,255,255,0.04);
   color: var(--muted);
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 700;
   line-height: 1.2;
   transition: 220ms ease;
 }
 .developer-credit strong {
   color: var(--primary);
+  font-size: inherit;
+  font-weight: 700;
 }
 .developer-credit:hover {
   color: #fff;
