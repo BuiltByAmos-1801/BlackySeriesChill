@@ -66,6 +66,12 @@ const journey = [
   "Streaming & Live Broadcast Skills",
   "Building Blacky Series Chill Brand",
 ];
+const heroLines = ["Original Lyrics", "Live Broadcast Energy", "Photography Mood", "Collaboration Ready"];
+const liveStats = [
+  ["Original Focus", "Lyrics"],
+  ["Current Mode", "Studio"],
+  ["Collab Status", "Open"],
+];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -110,7 +116,7 @@ function Preloader() {
   );
 }
 
-function Navbar() {
+function Navbar({ activeSection }) {
   const [open, setOpen] = useState(false);
   return (
     <header className="navbar">
@@ -120,7 +126,7 @@ function Navbar() {
       </a>
       <nav className="desktop-nav" aria-label="Primary navigation">
         {navLinks.map((item) => (
-          <a key={item} href={`#${item.toLowerCase()}`}>{item}</a>
+          <a className={activeSection === item.toLowerCase() ? "active" : ""} key={item} href={`#${item.toLowerCase()}`}>{item}</a>
         ))}
       </nav>
       <button className="menu-btn" type="button" aria-label="Toggle menu" onClick={() => setOpen((value) => !value)}>
@@ -130,7 +136,7 @@ function Navbar() {
         {open && (
           <motion.nav className="mobile-nav" initial={{ opacity: 0, y: -16, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -16, scale: 0.98 }}>
             {navLinks.map((item) => (
-              <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setOpen(false)}>{item}</a>
+              <a className={activeSection === item.toLowerCase() ? "active" : ""} key={item} href={`#${item.toLowerCase()}`} onClick={() => setOpen(false)}>{item}</a>
             ))}
           </motion.nav>
         )}
@@ -140,6 +146,12 @@ function Navbar() {
 }
 
 function Hero() {
+  const [lineIndex, setLineIndex] = useState(0);
+  useEffect(() => {
+    const timer = setInterval(() => setLineIndex((value) => (value + 1) % heroLines.length), 2200);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section id="home" className="hero">
       <div className="blob blob-one" />
@@ -149,12 +161,26 @@ function Hero() {
           <span className="hero-kicker"><Sparkles size={18} /> Official Music Artist</span>
           <h1>Blacky Series Chill</h1>
           <p className="tagline">Where Emotions Turn Into Music.</p>
+          <div className="rotating-line" aria-live="polite">
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={heroLines[lineIndex]}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.35 }}
+              >
+                {heroLines[lineIndex]}
+              </motion.span>
+            </AnimatePresence>
+          </div>
           <p className="hero-text">A cinematic personal brand for Sadiq Khan, shaped around original lyrics, emotional sound, creative visuals, and live digital energy.</p>
           <div className="hero-actions">
             <a className="btn primary" href={links.spotify} target="_blank" rel="noreferrer"><Headphones size={19} /> Listen on Spotify</a>
             <a className="btn ghost" href={links.instagram} target="_blank" rel="noreferrer"><Sparkles size={19} /> Follow on Instagram</a>
           </div>
           <Equalizer />
+          <LivePanel />
         </motion.div>
         <motion.div
           className="artist-card glass-card"
@@ -179,6 +205,26 @@ function Hero() {
         </motion.div>
       </div>
     </section>
+  );
+}
+
+function LivePanel() {
+  const [time, setTime] = useState("");
+  useEffect(() => {
+    const update = () => setTime(new Date().toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit", second: "2-digit" }));
+    update();
+    const timer = setInterval(update, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="live-panel glass-card">
+      <div className="live-now"><span /> Live Brand Pulse</div>
+      <strong>{time}</strong>
+      <div className="live-stats">
+        {liveStats.map(([label, value]) => <p key={label}><small>{label}</small><b>{value}</b></p>)}
+      </div>
+    </div>
   );
 }
 
