@@ -110,7 +110,25 @@ img { display: block; width: 100%; }
   box-shadow: 0 20px 70px rgba(0, 0, 0, 0.36), 0 0 34px rgba(239, 68, 68, 0.08);
   transform: translateX(-50%);
 }
-.brand { font-size: clamp(1rem, 3vw, 1.28rem); font-weight: 800; letter-spacing: -0.04em; }
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  font-size: clamp(1rem, 3vw, 1.28rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+.brand img {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  border: 1px solid rgba(239,68,68,0.34);
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 20px rgba(239,68,68,0.22);
+  animation: coverPulse 4s ease-in-out infinite alternate;
+}
 .brand span { color: var(--primary); }
 .desktop-nav { display: flex; gap: 8px; }
 .desktop-nav a, .mobile-nav a {
@@ -329,9 +347,9 @@ img { display: block; width: 100%; }
 .social-card span { display: inline-flex; margin-top: 22px; color: var(--primary); font-weight: 900; }
 
 .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-flow: dense; gap: 16px; }
-.gallery-item { min-height: 240px; margin: 0; }
+.gallery-item { min-height: 260px; margin: 0; }
 .gallery-item.tall { grid-row: span 2; min-height: 496px; }
-.gallery-item img { height: 100%; object-fit: cover; opacity: 0.78; filter: saturate(1.05); transition: transform 450ms ease, opacity 450ms ease; }
+.gallery-item img { height: 100%; object-fit: cover; object-position: center; opacity: 0.84; filter: saturate(1.04) contrast(1.04); transition: transform 650ms ease, opacity 450ms ease, filter 450ms ease; }
 .gallery-item:hover img { transform: scale(1.08); opacity: 1; }
 .gallery-item figcaption {
   position: absolute;
@@ -467,6 +485,8 @@ img { display: block; width: 100%; }
   .navbar { top: 10px; width: min(calc(100% - 18px), 1180px); border-radius: 18px; }
   .hero { padding-top: 118px; }
   .hero h1 { font-size: clamp(3.2rem, 18vw, 5.8rem); }
+  .brand img { width: 36px; height: 36px; }
+  .brand { max-width: calc(100% - 56px); font-size: 0.98rem; }
   .hero-actions .btn { width: 100%; }
   .social-grid, .gallery-grid, .timeline-item, .footer { grid-template-columns: 1fr; }
   .gallery-item, .gallery-item.tall { min-height: 270px; }
