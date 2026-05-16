@@ -240,6 +240,19 @@ function About() {
           {skills.map((skill, index) => <motion.span animate={softFloat(index * 0.12)} whileHover={{ y: -7, scale: 1.05 }} className="skill-pill" key={skill}>{skill}</motion.span>)}
         </div>
       </div>
+      <div className="dynamic-stats">
+        {[
+          ["12+", "Creative Projects"],
+          ["24/7", "Music Mindset"],
+          ["5", "Active Platforms"],
+          ["100%", "Independent Energy"],
+        ].map(([value, label], index) => (
+          <motion.div className="stat-card glass-card" key={label} animate={softFloat(index * 0.1)} whileHover={{ y: -8, scale: 1.02 }}>
+            <strong>{value}</strong>
+            <span>{label}</span>
+          </motion.div>
+        ))}
+      </div>
     </Section>
   );
 }
@@ -282,16 +295,36 @@ function SocialHub() {
 }
 
 function Gallery() {
+  const [activeImage, setActiveImage] = useState(null);
   return (
     <Section id="gallery" eyebrow="Gallery" title="Moments, Music & Memories">
       <div className="gallery-grid">
         {gallery.map(([title, src, size], index) => (
-          <motion.figure className={`gallery-item glass-card ${size}`} key={title} animate={softFloat(index * 0.1)} whileHover={{ y: -10, scale: 1.015 }}>
+          <motion.figure
+            className={`gallery-item glass-card ${size}`}
+            key={title}
+            animate={softFloat(index * 0.1)}
+            whileHover={{ y: -10, scale: 1.015 }}
+            onClick={() => setActiveImage({ title, src })}
+            tabIndex={0}
+            onKeyDown={(event) => event.key === "Enter" && setActiveImage({ title, src })}
+          >
             <img loading="lazy" src={src} alt={title} />
             <figcaption>{title}</figcaption>
           </motion.figure>
         ))}
       </div>
+      <AnimatePresence>
+        {activeImage && (
+          <motion.div className="lightbox" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setActiveImage(null)}>
+            <motion.div className="lightbox-card" initial={{ scale: 0.92, y: 24 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.94, y: 20 }} onClick={(event) => event.stopPropagation()}>
+              <button type="button" onClick={() => setActiveImage(null)} aria-label="Close gallery preview"><X size={22} /></button>
+              <img src={activeImage.src} alt={activeImage.title} />
+              <h3>{activeImage.title}</h3>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </Section>
   );
 }
