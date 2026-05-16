@@ -553,7 +553,7 @@ function App() {
       }}
     >
       <SEO
-        title="Blacky Series Chill | Official Music Artist Website"
+        title="Blacky Series Chill | Sadiq Khan | Official Music Artist"
         description={seoDescription}
         keywords={seoKeywords}
         canonical={siteUrl}
