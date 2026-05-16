@@ -19,5 +19,8 @@
     "tailwindcss": "latest",
     "vite": "latest",
     "vite-plugin-sitemap": "^0.8.2"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }
