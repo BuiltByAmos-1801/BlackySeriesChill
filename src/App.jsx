@@ -11,6 +11,18 @@ import {
   Sparkles,
   X,
 } from "lucide-react";
+import artistImage from "./images/Sadiq_Khan.JPG.jpeg";
+import logoImage from "./images/logo.jpeg";
+import albumCover from "./images/The Opening New Song Vol.1 Album Cover Music Instagram Post_20250515_154719_0000.jpg.jpeg";
+import musicThumb from "./images/Brown and Green Simple Music Mix YouTube Thumbnail_20250125_235643_0000.jpg.jpeg";
+import travelThumb from "./images/Blue & White Minimal Travel Vlog  YouTube Thumbnail_20251020_111120_0000.jpg.jpeg";
+import stageImage from "./images/DSC_0056.JPG.jpeg";
+import portraitImage from "./images/DSC_0063.JPG.jpeg";
+import reelImage from "./images/IMG_1918.JPG.jpeg";
+import instaImage from "./images/SnapInsta.to_476368469_18015294890673477_2404260687870154797_n.jpg.jpg.jpeg";
+import screenOne from "./images/Screenshot_2025-10-20-11-05-04-93_92460851df6f172a4592fca41cc2d2e6.jpg.jpeg";
+import screenTwo from "./images/Screenshot_2025-10-20-11-05-21-76_92460851df6f172a4592fca41cc2d2e6.jpg.jpeg";
+import screenThree from "./images/Screenshot_2025-10-20-11-05-46-42_92460851df6f172a4592fca41cc2d2e6.jpg.jpeg";
 
 const links = {
   instagram: "https://www.instagram.com/sadiq__khan0921",
@@ -35,12 +47,17 @@ const socials = [
   { name: "Facebook", text: "Community updates and public moments.", href: links.facebook, icon: Music2 },
 ];
 const gallery = [
-  ["Studio Mood", "https://placehold.co/700x900/080808/ef4444?text=Studio+Mood", "tall"],
-  ["Live Broadcast", "https://placehold.co/700x520/111111/8b5cf6?text=Live+Broadcast", ""],
-  ["Lyrics Night", "https://placehold.co/700x520/070707/ffffff?text=Lyrics+Night", ""],
-  ["Creative Frame", "https://placehold.co/700x900/0b0b0b/ef4444?text=Creative+Frame", "tall"],
-  ["Memory Lane", "https://placehold.co/700x520/111111/b3b3b3?text=Memories", ""],
-  ["Artist Light", "https://placehold.co/700x520/060606/8b5cf6?text=Artist+Light", ""],
+  ["Sadiq Khan", artistImage, "tall"],
+  ["Album Cover", albumCover, ""],
+  ["Music Mix", musicThumb, ""],
+  ["Live Moment", stageImage, "tall"],
+  ["Portrait Session", portraitImage, ""],
+  ["Creative Reel", reelImage, ""],
+  ["Travel Vlog", travelThumb, ""],
+  ["Instagram Moment", instaImage, ""],
+  ["Music Screenshot", screenOne, ""],
+  ["Track Preview", screenTwo, ""],
+  ["Visual Memory", screenThree, ""],
 ];
 const journey = [
   "Music Passion Started",
@@ -98,6 +115,7 @@ function Navbar() {
   return (
     <header className="navbar">
       <a className="brand" href="#home" onClick={() => setOpen(false)}>
+        <img src={logoImage} alt="Blacky Series Chill logo" />
         <span>Blacky</span> Series Chill
       </a>
       <nav className="desktop-nav" aria-label="Primary navigation">
@@ -150,7 +168,7 @@ function Hero() {
           }}
         >
           <div className="artist-photo">
-            <img loading="lazy" src="https://placehold.co/720x900/050505/ef4444?text=Sadiq+Khan" alt="Sadiq Khan artist portrait placeholder" />
+            <img loading="lazy" src={artistImage} alt="Sadiq Khan artist portrait" />
           </div>
           <div className="artist-info">
             <span>Artist Card</span>
