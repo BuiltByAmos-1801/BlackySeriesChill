@@ -693,6 +693,30 @@ img { display: block; width: 100%; }
   .dynamic-stats { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 680px) {
+  .app-shell::before,
+  body::after {
+    display: none;
+  }
+  .navbar,
+  .mobile-nav,
+  .glass-card,
+  .gallery-item figcaption,
+  .lightbox {
+    backdrop-filter: none;
+  }
+  .glass-card {
+    box-shadow: 0 16px 38px rgba(0,0,0,0.32);
+  }
+  .blob {
+    display: none;
+  }
+  .equalizer {
+    height: 42px;
+    margin-top: 22px;
+  }
+  .equalizer span {
+    box-shadow: none;
+  }
   .navbar { top: 10px; width: min(calc(100% - 18px), 1180px); border-radius: 18px; }
   .hero { padding-top: 118px; }
   .hero h1 { font-size: clamp(3.2rem, 18vw, 5.8rem); }
