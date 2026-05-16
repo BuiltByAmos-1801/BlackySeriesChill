@@ -492,7 +492,7 @@ img { display: block; width: 100%; }
   object-position: center;
   opacity: 0.94;
   filter: saturate(1.02) contrast(1.02);
-  transition: opacity 220ms ease, filter 220ms ease;
+  transition: transform 360ms ease, opacity 220ms ease, filter 220ms ease;
 }
 .gallery-item.focus-top img { object-position: center top; }
 .gallery-item.contain img {
@@ -500,7 +500,8 @@ img { display: block; width: 100%; }
   padding: 12px;
   background: linear-gradient(145deg, rgba(69,10,10,0.32), rgba(5,5,5,0.72));
 }
-.gallery-item:hover img { opacity: 1; }
+.gallery-item:hover img { opacity: 1; transform: scale(1.025); }
+.gallery-item.contain:hover img { transform: scale(1.015); }
 .gallery-item figcaption {
   position: absolute;
   left: 16px;
