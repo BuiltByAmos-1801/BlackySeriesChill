@@ -521,7 +521,7 @@ function App() {
   return (
     <div className="app-shell">
       <SEO
-        title="Blacky Series Chill | Sadiq Khan | Official Music Artist"
+        title="Blacky Series Chill | Sadiq Khan – Official Music Artist"
         description={seoDescription}
         keywords={seoKeywords}
         canonical={siteUrl}
