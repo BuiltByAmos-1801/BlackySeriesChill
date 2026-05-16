@@ -212,6 +212,12 @@ function Navbar({ activeSection }) {
 }
 
 function Hero() {
+  const [lineIndex, setLineIndex] = useState(0);
+  useEffect(() => {
+    const timer = window.setInterval(() => setLineIndex((value) => (value + 1) % heroLines.length), 2600);
+    return () => window.clearInterval(timer);
+  }, []);
+
   return (
     <section id="home" className="hero">
       <div className="blob blob-one" />
@@ -224,13 +230,13 @@ function Hero() {
           <div className="rotating-line" aria-live="polite">
             <AnimatePresence mode="wait">
               <motion.span
-                key={heroLines[0]}
+                key={heroLines[lineIndex]}
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.35 }}
               >
-                {heroLines[0]}
+                {heroLines[lineIndex]}
               </motion.span>
             </AnimatePresence>
           </div>
@@ -494,7 +500,13 @@ function Footer() {
 }
 
 function App() {
+  const [loading, setLoading] = useState(true);
   const [activeSection, setActiveSection] = useState("home");
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setLoading(false), 850);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const sections = navLinks.map((item) => document.getElementById(item.toLowerCase())).filter(Boolean);
@@ -516,6 +528,7 @@ function App() {
         image={`${siteUrl}og-image.jpg`}
         schema={schemaData}
       />
+      <AnimatePresence>{loading && <Preloader />}</AnimatePresence>
       <Navbar activeSection={activeSection} />
       <main><Hero /><About /><Music /><SocialHub /><Gallery /><Journey /><Collaboration /><FAQ /><Contact /></main>
       <Footer />
