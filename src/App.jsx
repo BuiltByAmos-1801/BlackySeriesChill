@@ -326,7 +326,10 @@ function Contact() {
 function Footer() {
   return (
     <footer className="footer">
-      <div><h2>Blacky Series Chill</h2><p>© {new Date().getFullYear()} Sadiq Khan. All rights reserved.</p></div>
+      <div className="footer-brand">
+        <img src={logoImage} alt="Blacky Series Chill logo" />
+        <div><h2>Blacky Series Chill</h2><p>© {new Date().getFullYear()} Sadiq Khan. All rights reserved.</p></div>
+      </div>
       <div className="footer-socials">{socials.map(({ name, href }) => <a key={name} href={href} target="_blank" rel="noreferrer">{name}</a>)}</div>
       <motion.a className="to-top" href="#home" whileHover={{ y: -4 }}><ArrowUp size={20} /></motion.a>
     </footer>
