@@ -417,22 +417,44 @@ function Footer() {
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [activeSection, setActiveSection] = useState("home");
+  const [spotlight, setSpotlight] = useState({ x: 50, y: 20 });
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 25, restDelta: 0.001 });
+
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1500);
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    const sections = navLinks.map((item) => document.getElementById(item.toLowerCase())).filter(Boolean);
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.find((entry) => entry.isIntersecting);
+      if (visible) setActiveSection(visible.target.id);
+    }, { rootMargin: "-38% 0px -52% 0px", threshold: 0.01 });
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
   const backgroundOrbs = useMemo(() => Array.from({ length: 8 }).map((_, index) => ({ left: `${8 + index * 12}%`, delay: `${index * 0.45}s` })), []);
   return (
-    <>
+    <div
+      className="app-shell"
+      style={{ "--spot-x": `${spotlight.x}%`, "--spot-y": `${spotlight.y}%` }}
+      onPointerMove={(event) => {
+        const x = (event.clientX / window.innerWidth) * 100;
+        const y = (event.clientY / window.innerHeight) * 100;
+        setSpotlight({ x, y });
+      }}
+    >
       <AnimatePresence>{loading && <Preloader />}</AnimatePresence>
       <motion.div className="scroll-progress" style={{ scaleX }} />
       <div className="site-bg" aria-hidden="true">{backgroundOrbs.map((orb, index) => <span key={index} style={{ left: orb.left, animationDelay: orb.delay }} />)}</div>
-      <Navbar />
+      <Navbar activeSection={activeSection} />
       <main><Hero /><About /><Music /><SocialHub /><Gallery /><Journey /><Collaboration /><Contact /></main>
       <Footer />
-    </>
+    </div>
   );
 }
 
