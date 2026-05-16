@@ -676,6 +676,7 @@ img { display: block; width: 100%; }
   transition: 220ms ease;
 }
 .developer-credit strong {
+  display: inline;
   color: var(--primary);
   font-size: inherit;
   font-weight: 700;
