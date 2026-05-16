@@ -29,3 +29,15 @@ for filename in files:
         image.thumbnail((1400, 1400), Image.Resampling.LANCZOS)
         image.save(target, "WEBP", quality=78, method=6)
         print(f"{source.name} -> {target.name}")
+
+og_source = source_dir / "logo.jpeg"
+og_target = root / "public" / "og-image.jpg"
+with Image.open(og_source) as image:
+    image = image.convert("RGB")
+    image.thumbnail((1200, 630), Image.Resampling.LANCZOS)
+    canvas = Image.new("RGB", (1200, 630), (5, 5, 5))
+    x = (1200 - image.width) // 2
+    y = (630 - image.height) // 2
+    canvas.paste(image, (x, y))
+    canvas.save(og_target, "JPEG", quality=82, optimize=True)
+    print(f"{og_source.name} -> public/og-image.jpg")
