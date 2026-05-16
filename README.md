@@ -6,9 +6,10 @@ Advanced React/Vite artist portfolio for **Sadiq Khan**, the music artist and pe
 
 - React
 - Vite
-- Tailwind CSS
 - Framer Motion
 - Lucide React icons
+- React Helmet Async
+- Sitemap tooling
 - No PHP
 
 ## Run Locally
@@ -18,37 +19,73 @@ npm install
 npm run dev
 ```
 
-Then open the local Vite URL shown in the terminal.
-
 ## Build
 
 ```bash
 npm run build
 ```
 
-## Sections
+## SEO Features Added
 
-- Animated preloader
-- Fixed glass navbar
-- Cinematic hero with equalizer
-- Professional about section
-- Spotify artist showcase
-- Social hub
-- Glassmorphism gallery
-- Journey timeline
-- Collaboration CTA
-- Validated React contact form
-- Footer with back-to-top
+- Dynamic SEO component: `src/components/SEO.jsx`
+- React Helmet Async setup in `src/main.jsx`
+- Dynamic title, meta description, keywords and canonical URL
+- Open Graph and Twitter card tags
+- JSON-LD schema for `MusicGroup`, `Person`, `WebSite`, `Organization` and `FAQPage`
+- SEO-friendly FAQ section
+- Public `robots.txt`, `sitemap.xml`, `manifest.json`, `favicon.ico` and `og-image.jpg`
+- WebP versions of major website images in `src/images/webp`
+- Descriptive image alt text, lazy loading, and width/height attributes
+- Semantic homepage H1 and section H2 headings
 
-## Brand
+## Update Domain URL
 
-Tagline: **Where Emotions Turn Into Music.**
+Before deploying, replace `https://yourdomain.com` in:
 
-Colors:
+- `src/App.jsx`
+- `src/components/SEO.jsx`
+- `vite.config.js`
+- `public/robots.txt`
+- `public/sitemap.xml`
 
-- Background: `#050505`
-- Primary: `#ef4444`
-- Secondary: `#8b5cf6`
-- Text: `#ffffff`
-- Muted: `#b3b3b3`
-- Glass: `rgba(255,255,255,0.08)`
+Use your final domain, for example:
+
+```txt
+https://blackyserieschill.com
+```
+
+## Submit Sitemap To Google Search Console
+
+1. Deploy the website.
+2. Open [Google Search Console](https://search.google.com/search-console).
+3. Add and verify your domain property.
+4. Go to **Sitemaps**.
+5. Submit:
+
+```txt
+https://yourdomain.com/sitemap.xml
+```
+
+## Replace Open Graph Image
+
+The current OG image is:
+
+```txt
+public/og-image.jpg
+```
+
+Replace it with a 1200x630 JPG image for the best social sharing preview.
+
+## Add Google Analytics Later
+
+Add the Google Analytics script in `index.html`, or use a React analytics package. Place the tracking code in the `<head>` and keep it async so performance stays strong.
+
+## Image Optimization
+
+The local JPEG images were converted to WebP using:
+
+```bash
+python scripts/convert_images.py
+```
+
+Run it again after replacing source images.
