@@ -47,7 +47,7 @@ Tagline: **Where Emotions Turn Into Music.**
 Colors:
 
 - Background: `#050505`
-- Primary: `#1DB954`
+- Primary: `#ef4444`
 - Secondary: `#8b5cf6`
 - Text: `#ffffff`
 - Muted: `#b3b3b3`

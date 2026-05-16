@@ -35,10 +35,10 @@ const socials = [
   { name: "Facebook", text: "Community updates and public moments.", href: links.facebook, icon: Music2 },
 ];
 const gallery = [
-  ["Studio Mood", "https://placehold.co/700x900/080808/1DB954?text=Studio+Mood", "tall"],
+  ["Studio Mood", "https://placehold.co/700x900/080808/ef4444?text=Studio+Mood", "tall"],
   ["Live Broadcast", "https://placehold.co/700x520/111111/8b5cf6?text=Live+Broadcast", ""],
   ["Lyrics Night", "https://placehold.co/700x520/070707/ffffff?text=Lyrics+Night", ""],
-  ["Creative Frame", "https://placehold.co/700x900/0b0b0b/1DB954?text=Creative+Frame", "tall"],
+  ["Creative Frame", "https://placehold.co/700x900/0b0b0b/ef4444?text=Creative+Frame", "tall"],
   ["Memory Lane", "https://placehold.co/700x520/111111/b3b3b3?text=Memories", ""],
   ["Artist Light", "https://placehold.co/700x520/060606/8b5cf6?text=Artist+Light", ""],
 ];
