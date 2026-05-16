@@ -9,7 +9,7 @@ export default defineConfig({
     react(),
     Sitemap({
       hostname,
-      dynamicRoutes: ["/", "/#about", "/#music", "/#gallery", "/#journey", "/#socials", "/#contact"],
+      dynamicRoutes: ["/#about", "/#music", "/#gallery", "/#journey", "/#socials", "/#contact"],
     }),
   ],
 });
