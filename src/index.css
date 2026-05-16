@@ -33,9 +33,8 @@ body {
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(circle at var(--spot-x, 50%) var(--spot-y, 20%), rgba(239, 68, 68, 0.16), transparent 24rem),
-    radial-gradient(circle at calc(var(--spot-x, 50%) + 16%) calc(var(--spot-y, 20%) + 12%), rgba(139, 92, 246, 0.09), transparent 20rem);
-  transition: background 120ms linear;
+    radial-gradient(circle at 28% 18%, rgba(239, 68, 68, 0.14), transparent 24rem),
+    radial-gradient(circle at 72% 26%, rgba(139, 92, 246, 0.08), transparent 20rem);
 }
 body::before {
   content: "";
@@ -96,15 +95,7 @@ img { display: block; width: 100%; }
   box-shadow: 0 0 20px rgba(239, 68, 68, 0.82);
 }
 .site-bg span {
-  position: fixed;
-  bottom: -80px;
-  z-index: -1;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: rgba(239, 68, 68, 0.62);
-  box-shadow: 0 0 18px rgba(239, 68, 68, 0.5);
-  animation: particleRise 13s linear infinite, emberPulse 2.8s ease-in-out infinite alternate;
+  display: none;
 }
 
 .navbar {
@@ -141,8 +132,7 @@ img { display: block; width: 100%; }
   border: 1px solid rgba(239,68,68,0.34);
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 0 20px rgba(239,68,68,0.22);
-  animation: coverPulse 4s ease-in-out infinite alternate;
+  box-shadow: 0 0 14px rgba(239,68,68,0.18);
 }
 .brand span { color: var(--primary); }
 .desktop-nav { display: flex; gap: 8px; }
@@ -277,17 +267,10 @@ img { display: block; width: 100%; }
   pointer-events: none;
   border-radius: inherit;
   background: linear-gradient(135deg, rgba(239,68,68,0.24), transparent 42%, rgba(139,92,246,0.18));
-  animation: glassGlow 6s ease-in-out infinite alternate;
+  opacity: 0.55;
 }
 .glass-card::after {
-  content: "";
-  position: absolute;
-  inset: -60% -25%;
-  pointer-events: none;
-  background: linear-gradient(105deg, transparent 42%, rgba(255,255,255,0.12), transparent 58%);
-  transform: translateX(-35%) rotate(8deg);
-  animation: lightSweep 8s ease-in-out infinite;
-  opacity: 0.28;
+  display: none;
 }
 .glass-card:hover {
   border-color: rgba(239,68,68,0.38);
@@ -331,7 +314,6 @@ img { display: block; width: 100%; }
   border-radius: 50%;
   background: var(--primary);
   box-shadow: 0 0 18px rgba(239,68,68,0.8);
-  animation: emberPulse 900ms ease-in-out infinite alternate;
 }
 .live-panel strong {
   position: relative;
@@ -370,8 +352,6 @@ img { display: block; width: 100%; }
   height: var(--height);
   border-radius: 999px;
   background: linear-gradient(var(--primary), var(--secondary));
-  animation: equalize 1s ease-in-out infinite alternate;
-  animation-delay: var(--delay);
   box-shadow: 0 0 16px rgba(239,68,68,0.48);
 }
 .blob {
@@ -380,9 +360,8 @@ img { display: block; width: 100%; }
   width: min(42vw, 520px);
   aspect-ratio: 1;
   border-radius: 50%;
-  filter: blur(70px);
-  opacity: 0.44;
-  animation: floatBlob 8s ease-in-out infinite;
+  filter: blur(48px);
+  opacity: 0.32;
 }
 .blob-one { top: 12%; right: 8%; background: var(--secondary); }
 .blob-two { bottom: 6%; left: 4%; background: var(--primary); animation-delay: -3s; }
@@ -457,9 +436,9 @@ img { display: block; width: 100%; }
   color: var(--muted);
 }
 .spotify-card iframe { position: relative; z-index: 1; overflow: hidden; border: 0; border-radius: 18px; }
-.release-stack { display: grid; gap: 14px; }
+.release-stack { display: none; gap: 14px; }
 .release-card { display: grid; grid-template-columns: auto 1fr auto; gap: 14px; align-items: center; padding: 14px; }
-.release-art { width: 64px; height: 64px; border-radius: 16px; box-shadow: 0 0 26px rgba(239,68,68,0.26); animation: coverPulse 3.8s ease-in-out infinite alternate; }
+.release-art { width: 64px; height: 64px; border-radius: 16px; box-shadow: 0 0 26px rgba(239,68,68,0.26); }
 .release-link { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px; color: var(--text); background: rgba(255,255,255,0.08); transition: transform 0.2s ease, background 0.2s ease; }
 .release-link:hover { transform: translateX(2px); background: rgba(239,68,68,0.18); }
 .release-card h3, .social-card h3, .timeline h3, .contact-side h3 { margin: 0; font-size: 1.1rem; }
@@ -476,8 +455,8 @@ img { display: block; width: 100%; }
 .gallery-item { cursor: pointer; }
 .gallery-item:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; }
 .gallery-item.tall { grid-row: span 2; min-height: 496px; }
-.gallery-item img { height: 100%; object-fit: cover; object-position: center; opacity: 0.84; filter: saturate(1.04) contrast(1.04); transition: transform 650ms ease, opacity 450ms ease, filter 450ms ease; }
-.gallery-item:hover img { transform: scale(1.08); opacity: 1; }
+.gallery-item img { height: 100%; object-fit: cover; object-position: center; opacity: 0.9; filter: saturate(1.02) contrast(1.02); transition: opacity 220ms ease, filter 220ms ease; }
+.gallery-item:hover img { opacity: 1; }
 .gallery-item figcaption {
   position: absolute;
   left: 16px;
