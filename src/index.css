@@ -684,6 +684,13 @@ img { display: block; width: 100%; }
   }
 }
 
+@media (min-width: 768px) {
+  .section-shell:not(#home) {
+    content-visibility: auto;
+    contain-intrinsic-size: 900px;
+  }
+}
+
 @media (max-width: 1080px) {
   .desktop-nav { display: none; }
   .menu-btn { display: grid; }
