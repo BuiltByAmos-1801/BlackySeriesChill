@@ -405,6 +405,7 @@ img { display: block; width: 100%; }
   font-size: 1.04rem;
 }
 .about-grid, .music-grid, .contact-grid { display: grid; grid-template-columns: 1fr 0.9fr; gap: 22px; }
+.release-stack { display: none; }
 .about-copy, .contact-form, .contact-side, .spotify-card, .collab { padding: clamp(22px, 4vw, 34px); }
 .about-copy p { margin: 0 0 18px; color: var(--muted); font-size: 1.04rem; }
 .skill-wrap { display: flex; flex-wrap: wrap; align-content: start; gap: 12px; }
