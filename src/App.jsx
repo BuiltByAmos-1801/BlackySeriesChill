@@ -305,10 +305,11 @@ function LivePanel() {
 
 function About() {
   return (
-    <Section id="about" eyebrow="About" title="A Creative Identity Built Around Emotion">
+    <Section id="about" eyebrow="About" title="About The Artist">
       <div className="about-grid">
         <div className="glass-card about-copy">
           <p>Blacky Series Chill is the creative music identity of Sadiq Khan, focused on crafting original lyrics and music that express emotion, personal stories, and artistic freedom. Through music, he explores sound as a space for honesty, connection, and creative enjoyment.</p>
+          <p>As an independent music artist connected to Garhwa, Jharkhand, Sadiq Khan uses Blacky Series Chill to share original lyrics, Spotify music, performance ideas and creative collaborations with listeners who connect with honest sound and visual storytelling.</p>
           <p>His academic journey includes studies at Garhwa Polytechnic College, Hasker, Garhwa. With experience in streaming media, live broadcast, photography, and artist collaboration, Sadiq brings a multidimensional approach to his work while contributing to a dynamic culture of music, performance, and digital creativity.</p>
         </div>
         <div className="skill-wrap">
@@ -334,9 +335,12 @@ function About() {
 
 function Music() {
   return (
-    <Section id="music" eyebrow="Music" title="Spotify-Inspired Sound Showcase">
+    <Section id="music" eyebrow="Music" title="Latest Music Releases">
+      <p className="section-copy">Explore the latest Blacky Series Chill releases, Spotify tracks and independent music concepts from Sadiq Khan. The sound focuses on emotional lyrics, cinematic atmosphere and a growing artist journey.</p>
       <div className="music-grid">
         <div className="glass-card spotify-card">
+          <h2>Spotify Music</h2>
+          <p>Listen through the official Spotify artist profile and follow Blacky Series Chill for new music updates.</p>
           <iframe title="Blacky Series Chill Spotify artist" src="https://open.spotify.com/embed/artist/23txuHa99Z3PwhyN20VZwy?utm_source=generator&theme=0" width="100%" height="352" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" />
         </div>
         <div className="release-stack">
@@ -383,10 +387,12 @@ function Gallery() {
             animate={softFloat(index * 0.1)}
             whileHover={{ y: -10, scale: 1.015 }}
             onClick={() => setActiveImage({ title, src })}
+            role="button"
             tabIndex={0}
+            aria-label={`Open gallery image: ${title}`}
             onKeyDown={(event) => event.key === "Enter" && setActiveImage({ title, src })}
           >
-            <img loading="lazy" src={src} alt={title} />
+            <img loading="lazy" src={src} alt={`${title} - Blacky Series Chill music artist gallery`} width="700" height={size === "tall" ? "900" : "520"} />
             <figcaption>{title}</figcaption>
           </motion.figure>
         ))}
@@ -408,7 +414,7 @@ function Gallery() {
 
 function Journey() {
   return (
-    <Section id="journey" eyebrow="Journey" title="From Passion To Personal Brand">
+    <Section id="journey" eyebrow="Journey" title="Artist Journey">
       <div className="timeline">
         {journey.map((item, index) => (
           <motion.div className="timeline-item" key={item} variants={fadeUp} animate={softFloat(index * 0.12)}>
@@ -425,7 +431,8 @@ function Collaboration() {
   return (
     <motion.section className="collab glass-card" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
       <Mic2 size={38} />
-      <h2>Available for music collaborations, live performances, creative projects and digital promotions.</h2>
+      <h2>Collaborations</h2>
+      <p>Blacky Series Chill is available for music collaborations, live performances, creative projects and digital promotions. Artists, creators and brands can contact Sadiq Khan for original lyrics, music promotion ideas and live digital content.</p>
       <a className="btn primary" href="#contact">Contact for Collaboration</a>
     </motion.section>
   );
