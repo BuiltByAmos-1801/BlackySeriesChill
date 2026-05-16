@@ -717,6 +717,10 @@ img { display: block; width: 100%; }
   20% { opacity: 0.85; }
   to { transform: translateY(-120vh); opacity: 0; }
 }
+@keyframes titleGlow {
+  from { text-shadow: 0 0 24px rgba(239,68,68,0.42), 0 0 48px rgba(139,92,246,0.2); }
+  to { text-shadow: 0 0 38px rgba(239,68,68,0.72), 0 0 70px rgba(139,92,246,0.34); }
+}
 
 @media (prefers-reduced-motion: reduce) {
   *,
