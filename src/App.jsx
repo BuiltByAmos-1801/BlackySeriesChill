@@ -413,6 +413,9 @@ function Footer() {
         <img src={logoImage} alt="Blacky Series Chill logo" />
         <div><h2>Blacky Series Chill</h2><p>© {new Date().getFullYear()} Sadiq Khan. All rights reserved.</p></div>
       </div>
+      <a className="developer-credit" href="https://builtbyamos.great-site.net/?i=1" target="_blank" rel="noreferrer">
+        Developed by <strong>Built By Amos</strong>
+      </a>
       <div className="footer-socials">{socials.map(({ name, href }) => <a key={name} href={href} target="_blank" rel="noreferrer">{name}</a>)}</div>
       <motion.a className="to-top" href="#home" whileHover={{ y: -4 }}><ArrowUp size={20} /></motion.a>
     </footer>
