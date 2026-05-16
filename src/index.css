@@ -440,6 +440,8 @@ img { display: block; width: 100%; }
 .release-stack { display: grid; gap: 14px; }
 .release-card { display: grid; grid-template-columns: auto 1fr auto; gap: 14px; align-items: center; padding: 14px; }
 .release-art { width: 64px; height: 64px; border-radius: 16px; box-shadow: 0 0 26px rgba(239,68,68,0.26); animation: coverPulse 3.8s ease-in-out infinite alternate; }
+.release-link { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px; color: var(--text); background: rgba(255,255,255,0.08); transition: transform 0.2s ease, background 0.2s ease; }
+.release-link:hover { transform: translateX(2px); background: rgba(239,68,68,0.18); }
 .release-card h3, .social-card h3, .timeline h3, .contact-side h3 { margin: 0; font-size: 1.1rem; }
 .release-card p, .social-card p, .timeline p, .contact-side p { margin: 6px 0 0; color: var(--muted); }
 
