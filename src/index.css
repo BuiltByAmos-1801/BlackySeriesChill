@@ -662,7 +662,9 @@ img { display: block; width: 100%; }
 .footer-socials a { font-weight: 800; }
 .developer-credit {
   justify-self: center;
-  padding: 6px 10px;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
   border: 1px solid rgba(239,68,68,0.18);
   border-radius: 999px;
   background: rgba(255,255,255,0.04);
@@ -670,6 +672,7 @@ img { display: block; width: 100%; }
   font-size: 0.75rem;
   font-weight: 700;
   line-height: 1.2;
+  white-space: nowrap;
   transition: 220ms ease;
 }
 .developer-credit strong {
