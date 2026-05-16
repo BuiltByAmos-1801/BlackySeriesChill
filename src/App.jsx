@@ -204,7 +204,7 @@ function Navbar({ activeSection }) {
           <a className={activeSection === item.toLowerCase() ? "active" : ""} key={item} href={`#${item.toLowerCase()}`}>{item}</a>
         ))}
       </nav>
-      <button className="menu-btn" type="button" aria-label="Toggle menu" onClick={() => setOpen((value) => !value)}>
+      <button className="menu-btn" type="button" aria-label="Toggle navigation menu" aria-expanded={open} onClick={() => setOpen((value) => !value)}>
         {open ? <X size={22} /> : <Menu size={22} />}
       </button>
       <AnimatePresence>
@@ -366,7 +366,7 @@ function SocialHub() {
     <Section id="socials" eyebrow="Social Hub" title="Follow The Signal Everywhere">
       <div className="social-grid">
         {socials.map(({ name, text, href, icon: Icon }, index) => (
-          <motion.a className="social-card glass-card" href={href} target="_blank" rel="noreferrer" key={name} animate={softFloat(index * 0.16)} whileHover={{ y: -12, scale: 1.03 }}>
+          <motion.a className="social-card glass-card" href={href} target="_blank" rel="noreferrer" key={name} aria-label={`Visit Blacky Series Chill on ${name}`} animate={softFloat(index * 0.16)} whileHover={{ y: -12, scale: 1.03 }}>
             <Icon size={30} /><h3>{name}</h3><p>{text}</p><span>Visit</span>
           </motion.a>
         ))}
@@ -402,7 +402,7 @@ function Gallery() {
           <motion.div className="lightbox" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setActiveImage(null)}>
             <motion.div className="lightbox-card" initial={{ scale: 0.92, y: 24 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.94, y: 20 }} onClick={(event) => event.stopPropagation()}>
               <button type="button" onClick={() => setActiveImage(null)} aria-label="Close gallery preview"><X size={22} /></button>
-              <img src={activeImage.src} alt={activeImage.title} />
+              <img src={activeImage.src} alt={`${activeImage.title} full preview for Blacky Series Chill`} />
               <h3>{activeImage.title}</h3>
             </motion.div>
           </motion.div>
@@ -486,18 +486,33 @@ function Contact() {
   );
 }
 
+function FAQ() {
+  return (
+    <Section id="faq" eyebrow="FAQ" title="Frequently Asked Questions">
+      <div className="faq-grid">
+        {faqItems.map((item, index) => (
+          <motion.article className="faq-card glass-card" key={item.question} animate={softFloat(index * 0.08)} whileHover={{ y: -6 }}>
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
+          </motion.article>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
 function Footer() {
   return (
     <footer className="footer">
       <div className="footer-brand">
-        <img src={logoImage} alt="Blacky Series Chill logo" />
-        <div><h2>Blacky Series Chill</h2><p>© {new Date().getFullYear()} Sadiq Khan. All rights reserved.</p></div>
+        <img src={logoImage} alt="Blacky Series Chill official logo" width="116" height="116" />
+        <div><strong>Blacky Series Chill</strong><p>© {new Date().getFullYear()} Sadiq Khan. All rights reserved.</p></div>
       </div>
       <a className="developer-credit" href="https://builtbyamos.great-site.net/?i=1" target="_blank" rel="noreferrer">
         Developed by <strong>Built By Amos</strong>
       </a>
       <div className="footer-socials">{socials.map(({ name, href }) => <a key={name} href={href} target="_blank" rel="noreferrer">{name}</a>)}</div>
-      <motion.a className="to-top" href="#home" whileHover={{ y: -4 }}><ArrowUp size={20} /></motion.a>
+      <motion.a className="to-top" href="#home" aria-label="Back to top" whileHover={{ y: -4 }}><ArrowUp size={20} /></motion.a>
     </footer>
   );
 }
@@ -537,11 +552,19 @@ function App() {
         shellRef.current?.style.setProperty("--spot-y", `${y}%`);
       }}
     >
+      <SEO
+        title="Blacky Series Chill | Official Music Artist Website"
+        description={seoDescription}
+        keywords={seoKeywords}
+        canonical={siteUrl}
+        image={`${siteUrl}og-image.jpg`}
+        schema={schemaData}
+      />
       <AnimatePresence>{loading && <Preloader />}</AnimatePresence>
       <motion.div className="scroll-progress" style={{ scaleX }} />
       <div className="site-bg" aria-hidden="true">{backgroundOrbs.map((orb, index) => <span key={index} style={{ left: orb.left, animationDelay: orb.delay }} />)}</div>
       <Navbar activeSection={activeSection} />
-      <main><Hero /><About /><Music /><SocialHub /><Gallery /><Journey /><Collaboration /><Contact /></main>
+      <main><Hero /><About /><Music /><SocialHub /><Gallery /><Journey /><Collaboration /><FAQ /><Contact /></main>
       <Footer />
     </div>
   );
