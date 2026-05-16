@@ -49,17 +49,17 @@ const socials = [
   { name: "Facebook", text: "Community updates and public moments.", href: links.facebook, icon: Music2 },
 ];
 const gallery = [
-  ["Sadiq Khan", artistImage, "tall"],
-  ["Album Cover", albumCover, ""],
-  ["Music Mix", musicThumb, ""],
-  ["Live Moment", stageImage, "tall"],
-  ["Portrait Session", portraitImage, ""],
-  ["Creative Reel", reelImage, ""],
-  ["Travel Vlog", travelThumb, ""],
-  ["Instagram Moment", instaImage, ""],
-  ["Music Screenshot", screenOne, ""],
-  ["Track Preview", screenTwo, ""],
-  ["Visual Memory", screenThree, ""],
+  ["Sadiq Khan", artistImage, "portrait focus-top"],
+  ["Album Cover", albumCover, "square contain"],
+  ["Music Mix", musicThumb, "wide contain"],
+  ["Live Moment", stageImage, "portrait focus-top"],
+  ["Portrait Session", portraitImage, "square focus-top"],
+  ["Creative Reel", reelImage, "square focus-top"],
+  ["Travel Vlog", travelThumb, "wide contain"],
+  ["Instagram Moment", instaImage, "square focus-top"],
+  ["Music Screenshot", screenOne, "phone contain"],
+  ["Track Preview", screenTwo, "phone contain"],
+  ["Visual Memory", screenThree, "phone contain"],
 ];
 const journey = [
   "Music Passion Started",
@@ -368,7 +368,7 @@ function Gallery() {
             aria-label={`Open gallery image: ${title}`}
             onKeyDown={(event) => event.key === "Enter" && setActiveImage({ title, src })}
           >
-            <img loading="lazy" src={src} alt={`${title} - Blacky Series Chill music artist gallery`} width="700" height={size === "tall" ? "900" : "520"} />
+            <img loading="lazy" src={src} alt={`${title} - Blacky Series Chill music artist gallery`} width="700" height={size.includes("portrait") || size.includes("phone") ? "900" : "520"} />
             <figcaption>{title}</figcaption>
           </motion.figure>
         ))}
