@@ -11,18 +11,18 @@ import {
   Sparkles,
   X,
 } from "lucide-react";
-import artistImage from "./images/Sadiq_Khan.JPG.jpeg";
-import logoImage from "./images/logo.jpg";
-import albumCover from "./images/The Opening New Song Vol.1 Album Cover Music Instagram Post_20250515_154719_0000.jpg.jpeg";
-import musicThumb from "./images/Brown and Green Simple Music Mix YouTube Thumbnail_20250125_235643_0000.jpg.jpeg";
-import travelThumb from "./images/Blue & White Minimal Travel Vlog  YouTube Thumbnail_20251020_111120_0000.jpg.jpeg";
-import stageImage from "./images/DSC_0056.JPG.jpeg";
-import portraitImage from "./images/DSC_0063.JPG.jpeg";
-import reelImage from "./images/IMG_1918.JPG.jpeg";
-import instaImage from "./images/SnapInsta.to_476368469_18015294890673477_2404260687870154797_n.jpg.jpg.jpeg";
-import screenOne from "./images/Screenshot_2025-10-20-11-05-04-93_92460851df6f172a4592fca41cc2d2e6.jpg.jpeg";
-import screenTwo from "./images/Screenshot_2025-10-20-11-05-21-76_92460851df6f172a4592fca41cc2d2e6.jpg.jpeg";
-import screenThree from "./images/Screenshot_2025-10-20-11-05-46-42_92460851df6f172a4592fca41cc2d2e6.jpg.jpeg";
+import artistImage from "./images/webp/Sadiq_Khan.JPG.webp";
+import logoImage from "./images/webp/logo.webp";
+import albumCover from "./images/webp/The Opening New Song Vol.1 Album Cover Music Instagram Post_20250515_154719_0000.jpg.webp";
+import musicThumb from "./images/webp/Brown and Green Simple Music Mix YouTube Thumbnail_20250125_235643_0000.jpg.webp";
+import travelThumb from "./images/webp/Blue & White Minimal Travel Vlog  YouTube Thumbnail_20251020_111120_0000.jpg.webp";
+import stageImage from "./images/webp/DSC_0056.JPG.webp";
+import portraitImage from "./images/webp/DSC_0063.JPG.webp";
+import reelImage from "./images/webp/IMG_1918.JPG.webp";
+import instaImage from "./images/webp/SnapInsta.to_476368469_18015294890673477_2404260687870154797_n.jpg.jpg.webp";
+import screenOne from "./images/webp/Screenshot_2025-10-20-11-05-04-93_92460851df6f172a4592fca41cc2d2e6.jpg.webp";
+import screenTwo from "./images/webp/Screenshot_2025-10-20-11-05-21-76_92460851df6f172a4592fca41cc2d2e6.jpg.webp";
+import screenThree from "./images/webp/Screenshot_2025-10-20-11-05-46-42_92460851df6f172a4592fca41cc2d2e6.jpg.webp";
 import SEO from "./components/SEO.jsx";
 
 const links = {
