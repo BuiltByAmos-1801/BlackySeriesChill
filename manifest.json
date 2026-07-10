@@ -2,10 +2,10 @@
   "name": "Blacky Series Chill",
   "short_name": "Blacky Chill",
   "description": "Official music artist website of Blacky Series Chill and Sadiq Khan.",
-  "start_url": "/",
+  "start_url": "/#/home",
   "display": "standalone",
-  "background_color": "#050505",
-  "theme_color": "#ef4444",
+  "background_color": "#03060d",
+  "theme_color": "#03060d",
   "icons": [
     {
       "src": "/favicon.ico",
